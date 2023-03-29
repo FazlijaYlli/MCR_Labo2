@@ -1,5 +1,7 @@
 package ch.heig.factories;
 
+import ch.heig.bouncers.Circle;
+import ch.heig.bouncers.FilledCircle;
 import ch.heig.bouncers.FilledSquare;
 import ch.heig.bouncers.Square;
 
@@ -12,7 +14,12 @@ public class FilledBouncersFactory implements BouncersFactory {
     }
 
     @Override
-    public Square createSquare() {
+    public Square makeSquare() {
         return new FilledSquare();
+    }
+
+    @Override
+    public Circle makeCircle() {
+        return new FilledCircle();
     }
 }

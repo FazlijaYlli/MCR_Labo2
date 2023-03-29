@@ -1,8 +1,6 @@
 package ch.heig.factories;
 
-import ch.heig.bouncers.BorderSquare;
-import ch.heig.bouncers.FilledSquare;
-import ch.heig.bouncers.Square;
+import ch.heig.bouncers.*;
 
 public class BorderBouncersFactory implements BouncersFactory{
     private static BorderBouncersFactory instance;
@@ -14,7 +12,12 @@ public class BorderBouncersFactory implements BouncersFactory{
     }
 
     @Override
-    public Square createSquare() {
+    public Square makeSquare() {
         return new BorderSquare();
+    }
+
+    @Override
+    public Circle makeCircle() {
+        return new BorderCircle();
     }
 }
