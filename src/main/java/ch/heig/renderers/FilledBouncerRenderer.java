@@ -14,8 +14,7 @@ public class FilledBouncerRenderer implements Renderer{
      * @return l'instance unique du Singleton
      */
     public static FilledBouncerRenderer getInstance() {
-        if (instance == null)
-            instance = new FilledBouncerRenderer();
+        if (instance == null) { instance = new FilledBouncerRenderer(); }
         return instance;
     }
 

@@ -7,9 +7,7 @@ public class FilledBouncersFactory implements BouncersFactory {
     private static FilledBouncersFactory instance;
     private FilledBouncersFactory() {}
     public static FilledBouncersFactory getInstance() {
-        if (instance == null) {
-            instance = new FilledBouncersFactory();
-        }
+        if (instance == null) { instance = new FilledBouncersFactory(); }
         return instance;
     }
 

@@ -2,6 +2,8 @@ package ch.heig.displayers;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyAdapter;
 
 public class FrameDisplayer implements Displayer {
@@ -16,17 +18,23 @@ public class FrameDisplayer implements Displayer {
         frame = new JFrame();
         frame.setSize(BASE_W, BASE_H);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         panel = new JPanel();
         panel.setBackground(Color.WHITE);
         frame.setContentPane(panel);
 
         frame.setVisible(true);
         image = panel.createImage(getWidth(), getHeight());
+        frame.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                image = panel.createImage(getWidth(), getHeight());
+            }
+        });
     }
 
     public static FrameDisplayer getInstance() {
-        if (instance == null)
-            instance = new FrameDisplayer();
+        if (instance == null) { instance = new FrameDisplayer(); }
         return instance;
     }
 
