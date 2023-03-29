@@ -1,17 +1,18 @@
-package org.example;
+package ch.heig.renderers;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class BouncersFrame extends JFrame implements Displayer{
+public class BouncersFrame extends JFrame implements Displayer {
     private static BouncersFrame instance = null;
-    private final int width;
-    private final int height;
+    private final int bouncerFrameWidth;
+    private final int bouncerFrameHeight;
 
     private BouncersFrame(int width, int height) {
-        this.width = width;
-        this.height = height;
+        this.bouncerFrameWidth = width;
+        this.bouncerFrameHeight = height;
         setTitle("Bouncers");
+        getContentPane().setBackground(Color.BLACK);
         setResizable(true);
     }
 
@@ -27,32 +28,30 @@ public class BouncersFrame extends JFrame implements Displayer{
      */
     public void display() {
         pack();
-        setSize(width, height);
+        setSize(bouncerFrameWidth, bouncerFrameHeight);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
     void drawRectangles(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-
-//        g2d.drawRect(30, 50, 420, 120);
-
-        // TODO: ça ça marche pas
-//        JPanel panel = new JPanel();
-//        Image offscreenImage = panel.createImage(width, height);
-//        Graphics2D graphics = (Graphics2D) offscreenImage.getGraphics();
-//        graphics.fillRect(0, 0, width, height);
-
+        Image offscreenImage = createImage(bouncerFrameWidth, bouncerFrameHeight);
+        Graphics2D graphics = (Graphics2D) offscreenImage.getGraphics();
+        graphics.setColor(Color.WHITE);
+//        graphics.setPaintMode();
+//        graphics.drawRect(100, 100, bouncerFrameWidth - 100, bouncerFrameHeight - 100);
+        graphics.fillRect(100, 100, bouncerFrameWidth - 100, bouncerFrameHeight - 100);
+        graphics.drawImage(offscreenImage, 0, 0, this);
+        setVisible(true);
     }
 
-    void paintComponent(Graphics g) { // TODO
-        super.paint(g);
-        drawRectangles(g);
-    }
+//    void paintComponent(Graphics g) { // TODO
+//        super.paint(g);
+//        drawRectangles(g);
+//    }
 
     public void paint(Graphics g) {
-        super.paint(g);
         drawRectangles(g);
+        super.paint(g);
     }
 
 //    public void displayImage() {
@@ -86,12 +85,12 @@ public class BouncersFrame extends JFrame implements Displayer{
 
     @Override
     public int getWidth() {
-        return width;
+        return bouncerFrameWidth;
     }
 
     @Override
     public int getHeight() {
-        return height;
+        return bouncerFrameHeight;
     }
 
     @Override

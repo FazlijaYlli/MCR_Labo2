@@ -1,4 +1,4 @@
-package org.example;
+package ch.heig.renderers;
 
 import java.awt.Graphics2D;
 
