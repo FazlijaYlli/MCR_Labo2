@@ -28,7 +28,7 @@ public class FrameDisplayer implements Displayer {
         frame.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                image = panel.createImage(getWidth(), getHeight());
+                image = panel.createImage(getWidth(), (getHeight() == 0 ? 1 : getHeight()));
             }
         });
     }

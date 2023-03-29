@@ -2,6 +2,7 @@ package ch.heig;
 
 import ch.heig.bouncers.Bouncable;
 import ch.heig.displayers.FrameDisplayer;
+import ch.heig.factories.BorderBouncersFactory;
 import ch.heig.factories.BouncersFactory;
 import ch.heig.factories.FilledBouncersFactory;
 
@@ -31,6 +32,8 @@ public class Bouncers {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_E -> bouncers.clear();
                     case KeyEvent.VK_F -> createBouncers(NB_BOUNCERS, FilledBouncersFactory.getInstance());
+                    case KeyEvent.VK_B -> createBouncers(NB_BOUNCERS, BorderBouncersFactory.getInstance());
+                    case KeyEvent.VK_Q -> System.exit(0);
                 }
             }
         });
@@ -52,6 +55,7 @@ public class Bouncers {
 
     private void createBouncers(int nb, BouncersFactory fac) {
         for (int i = 0 ; i < nb ; ++i) {
+            // On crée un bouncer avec la factory passée en paramètre.
             bouncers.add(fac.createSquare());
         }
     }
