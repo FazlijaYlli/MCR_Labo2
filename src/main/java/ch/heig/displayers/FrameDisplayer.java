@@ -8,18 +8,18 @@ import java.awt.event.KeyAdapter;
 
 public class FrameDisplayer implements Displayer {
     private static FrameDisplayer instance;
-    private final JPanel panel;
-    public final JFrame frame;
+    private static final JPanel panel = new JPanel();
+    public static final JFrame frame = new JFrame();
     private Image image;
     private static final int BASE_W = 640;
     private static final int BASE_H = 480;
 
     private FrameDisplayer() {
-        frame = new JFrame();
+//        frame = new JFrame();
         frame.setSize(BASE_W, BASE_H);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        panel = new JPanel();
+//        panel = new JPanel();
         panel.setBackground(Color.WHITE);
         frame.setContentPane(panel);
 
