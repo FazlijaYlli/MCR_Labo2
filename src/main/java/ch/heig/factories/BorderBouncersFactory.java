@@ -7,6 +7,7 @@ import ch.heig.bouncers.Square;
 
 public class BorderBouncersFactory implements BouncersFactory{
     private static BorderBouncersFactory instance;
+
     private BorderBouncersFactory() {}
 
     public static BorderBouncersFactory getInstance() {

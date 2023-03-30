@@ -7,6 +7,7 @@ import java.awt.*;
 public class BorderBouncerRenderer implements Renderer{
     // On stocke l'instance pour ne jamais créer deux fois la même instance.
     private static BorderBouncerRenderer instance;
+    private static final BasicStroke stroke = new BasicStroke(3);
 
     private BorderBouncerRenderer() {}
 
@@ -21,7 +22,7 @@ public class BorderBouncerRenderer implements Renderer{
     @Override
     public void display(Graphics2D g, Bouncable b) {
         g.setColor(b.getColor());
-        g.setStroke(new BasicStroke(3));
+        g.setStroke(stroke);
         g.draw(b.getShape());
     }
 }
