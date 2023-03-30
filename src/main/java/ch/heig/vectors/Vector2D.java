@@ -9,19 +9,9 @@ public class Vector2D {
         this.y = y;
     }
 
-    public Vector2D(Vector2D v) {
-        this.x = v.getX();
-        this.y = v.getY();
-    }
-
     public void set(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public void set(Vector2D v) {
-        this.x = v.getX();
-        this.y = v.getY();
     }
 
     public void setX(int x) {

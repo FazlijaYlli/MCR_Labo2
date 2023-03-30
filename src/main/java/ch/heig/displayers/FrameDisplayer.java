@@ -52,12 +52,11 @@ public class FrameDisplayer implements Displayer {
 
     @Override
     public void repaint() {
-        // Utilisation de la méthode drawImage pour recréer une image vide.
-        panel.getGraphics().drawImage(image, 0, 0, null);
         Graphics2D g = getGraphics();
         // Vidage l'objet graphics 2D.
         g.clearRect(0, 0, getWidth(), getHeight());
-        g.dispose();
+        // Utilisation de la méthode drawImage pour recréer une image vide.
+        panel.getGraphics().drawImage(image, 0, 0, null);
     }
 
     @Override
