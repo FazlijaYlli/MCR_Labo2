@@ -5,13 +5,12 @@ import ch.heig.renderers.Renderer;
 import ch.heig.vectors.Vector2D;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 
 public abstract class Bouncer implements Bouncable {
-    private int x;
-    private int y;
+    protected int x;
+    protected int y;
     private final int size;
     private final Vector2D movement;
     private static final int MAX_SIZE = 50;
@@ -60,13 +59,9 @@ public abstract class Bouncer implements Bouncable {
 
     public int getX() { return x; }
     public int getY() { return y; }
-
-    public int getSize() {
-        return size;
-    }
+    public int getSize() { return size; }
 
     public abstract Color getColor();
     public abstract Shape getShape();
-
     public abstract Renderer getRenderer();
 }
