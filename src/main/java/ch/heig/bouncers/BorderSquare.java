@@ -5,9 +5,11 @@ import ch.heig.renderers.BorderBouncerRenderer;
 import java.awt.*;
 
 public class BorderSquare extends Square {
+    private static final Color color = Color.RED;
+
     @Override
     public Color getColor() {
-        return Color.RED;
+        return color;
     }
 
     @Override
