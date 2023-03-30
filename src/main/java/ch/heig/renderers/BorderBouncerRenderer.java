@@ -2,23 +2,42 @@ package ch.heig.renderers;
 
 import ch.heig.bouncers.Bouncable;
 
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.BasicStroke;
 
-public class BorderBouncerRenderer implements Renderer{
-    // On stocke l'instance pour ne jamais créer deux fois la même instance.
+/**
+ * Renderer for bordered bouncable objects specifically.
+ *
+ * @version 1.0 - 30.03.2023
+ */
+public class BorderBouncerRenderer implements Renderer {
     private static BorderBouncerRenderer instance;
     private static final BasicStroke stroke = new BasicStroke(3);
 
-    private BorderBouncerRenderer() {}
+    /**
+     * Singleton: private constructor
+     */
+    private BorderBouncerRenderer() {
+    }
 
     /**
-     * @return l'instance unique du Singleton
+     * Get the unique instance of the singleton
+     *
+     * @return the unique instance of the singleton
      */
     public static BorderBouncerRenderer getInstance() {
-        if (instance == null) { instance = new BorderBouncerRenderer(); }
+        if (instance == null) {
+            instance = new BorderBouncerRenderer();
+        }
         return instance;
     }
 
+    /**
+     * Draw the given bouncable object
+     *
+     * @param g The graphics context
+     * @param b The bouncable to draw
+     */
     @Override
     public void display(Graphics2D g, Bouncable b) {
         g.setColor(b.getColor());

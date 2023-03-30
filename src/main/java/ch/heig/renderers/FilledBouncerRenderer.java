@@ -2,22 +2,40 @@ package ch.heig.renderers;
 
 import ch.heig.bouncers.Bouncable;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 
-public class FilledBouncerRenderer implements Renderer{
-    // On stocke l'instance pour ne jamais créer deux fois la même instance.
+/**
+ * Renderer for filled bouncable objects specifically.
+ *
+ * @version 1.0 - 30.03.2023
+ */
+public class FilledBouncerRenderer implements Renderer {
     private static FilledBouncerRenderer instance;
 
-    private FilledBouncerRenderer() {}
+    /**
+     * Private constructor to prevent multiple instances.
+     */
+    private FilledBouncerRenderer() {
+    }
 
     /**
-     * @return l'instance unique du Singleton
+     * Get the unique instance of a FilledBouncerRenderer singleton
+     *
+     * @return the unique instance of a FilledBouncerRenderer singleton
      */
     public static FilledBouncerRenderer getInstance() {
-        if (instance == null) { instance = new FilledBouncerRenderer(); }
+        if (instance == null) {
+            instance = new FilledBouncerRenderer();
+        }
         return instance;
     }
 
+    /**
+     * Draw the given bouncable object
+     *
+     * @param g The graphics context
+     * @param b The bouncable to draw
+     */
     @Override
     public void display(Graphics2D g, Bouncable b) {
         g.setColor(b.getColor());
