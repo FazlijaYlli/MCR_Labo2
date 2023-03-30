@@ -1,6 +1,9 @@
 package ch.heig.factories;
 
-import ch.heig.bouncers.*;
+import ch.heig.bouncers.BorderCircle;
+import ch.heig.bouncers.BorderSquare;
+import ch.heig.bouncers.Circle;
+import ch.heig.bouncers.Square;
 
 public class BorderBouncersFactory implements BouncersFactory{
     private static BorderBouncersFactory instance;

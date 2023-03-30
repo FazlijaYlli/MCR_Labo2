@@ -1,7 +1,6 @@
 package ch.heig.bouncers;
 
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 
 public abstract class Circle extends Bouncer {
     @Override

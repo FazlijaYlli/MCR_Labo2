@@ -16,26 +16,27 @@ import java.util.List;
 public class Bouncers {
     private static final int DELAY_MS = 10;
     private static final int NB_BOUNCERS = 10;
-
+    private static boolean started = false;
     private final List<Bouncable> bouncers = new LinkedList<>();
 
-    private boolean started = false;
 
-    public void run(int delay) {
+    public void run() {
         if (started) return;
+
         started = true;
-        FrameDisplayer.getInstance().setTitle("Bouncers");
         FrameDisplayer.getInstance().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
+                    case KeyEvent.VK_F -> createBouncers(FilledBouncersFactory.getInstance());
+                    case KeyEvent.VK_B -> createBouncers(BorderBouncersFactory.getInstance());
                     case KeyEvent.VK_E -> bouncers.clear();
-                    case KeyEvent.VK_F -> createBouncers(NB_BOUNCERS, FilledBouncersFactory.getInstance());
-                    case KeyEvent.VK_B -> createBouncers(NB_BOUNCERS, BorderBouncersFactory.getInstance());
                     case KeyEvent.VK_Q -> System.exit(0);
                 }
             }
         });
+
+        FrameDisplayer.getInstance().setTitle("Bouncers");
 
         ActionListener al = e -> {
             for (Bouncable b : bouncers) {
@@ -45,15 +46,15 @@ public class Bouncers {
             FrameDisplayer.getInstance().repaint();
         };
 
-        new Timer(delay, al).start();
+        new Timer(DELAY_MS, al).start();
     }
 
     public static void main(String[] args) {
-        new Bouncers().run(DELAY_MS);
+        new Bouncers().run();
     }
 
-    private void createBouncers(int nb, BouncersFactory fac) {
-        for (int i = 0 ; i < nb ; ++i) {
+    private void createBouncers(BouncersFactory fac) {
+        for (int i = 0; i < NB_BOUNCERS; ++i) {
             // On crée un bouncer avec la factory passée en paramètre.
             bouncers.add(fac.makeSquare());
             bouncers.add(fac.makeCircle());

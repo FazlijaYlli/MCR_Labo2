@@ -13,17 +13,18 @@ public abstract class Bouncer implements Bouncable {
     private int y;
     private int mx;
     private int my;
-
-    private static final int MAX_SIZE = 30;
-    private static final int MIN_SIZE = 8;
-    private static final int MAX_SPD = 8;
-    private static final int MIN_SPD = -7;
+    private static final int MAX_SIZE = 50;
+    private static final int MIN_SIZE = 5;
+    private static final int MAX_SPD = 10;
+    private static final int MIN_SPD = -10;
 
     public Bouncer() {
         x = ThreadLocalRandom.current().nextInt(FrameDisplayer.getInstance().getWidth());
         y = ThreadLocalRandom.current().nextInt(FrameDisplayer.getInstance().getHeight());
         mx = ThreadLocalRandom.current().nextInt(MIN_SPD, MAX_SPD);
         my = ThreadLocalRandom.current().nextInt(MIN_SPD, MAX_SPD);
+        mx = mx == 0 ? 1 : mx;
+        my = my == 0 ? 1 : my;
         size = ThreadLocalRandom.current().nextInt(MIN_SIZE,MAX_SIZE+1);
     }
 
@@ -37,13 +38,15 @@ public abstract class Bouncer implements Bouncable {
         y += my;
 
         // Collisions horizontale
-        if (x >= width - size || x <= 0) {
+        if (x >= width - size - mx || x <= 0) {
+            // Si on est à "un mouvement" de distance de toucher le mur
+            // On arrête le mouvement et on inverse la vitesse horizontale
             x = x <= 0 ? 0 : width - size;
             mx = -mx;
         }
 
         // Collision verticales
-        if (y >= height - size || y <= 0) {
+        if (y >= height - size - my || y <= 0) {
             y = y <= 0 ? 0 : height - size;
             my = -my;
         }

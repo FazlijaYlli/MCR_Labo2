@@ -4,7 +4,7 @@ import java.awt.geom.Rectangle2D;
 
 /**
  * Classe représentant un carré de manière abstraite.
- * Elle contient les informations nécéssaires aux carrés pleins et vides.
+ * Elle contient les informations nécessaires aux carrés pleins et vides.
  */
 public abstract class Square extends Bouncer {
     @Override
