@@ -14,16 +14,20 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Bouncers {
+    private final List<Bouncable> bouncers = new LinkedList<>();
     private static final int DELAY_MS = 10;
     private static final int NB_BOUNCERS = 10;
     private static boolean started = false;
-    private final List<Bouncable> bouncers = new LinkedList<>();
 
+    public static void main(String[] args) {
+        new Bouncers().run();
+    }
 
     public void run() {
         if (started) return;
-
         started = true;
+
+        // Gestion du clavier
         FrameDisplayer.getInstance().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -38,6 +42,7 @@ public class Bouncers {
 
         FrameDisplayer.getInstance().setTitle("Bouncers");
 
+        // Actions à effectuer à chaque tick du Timer.
         ActionListener al = e -> {
             for (Bouncable b : bouncers) {
                 b.move();
@@ -46,16 +51,13 @@ public class Bouncers {
             FrameDisplayer.getInstance().repaint();
         };
 
+        // Création et démarrage du timer
         new Timer(DELAY_MS, al).start();
-    }
-
-    public static void main(String[] args) {
-        new Bouncers().run();
     }
 
     private void createBouncers(BouncersFactory fac) {
         for (int i = 0; i < NB_BOUNCERS; ++i) {
-            // On crée un bouncer avec la factory passée en paramètre.
+            // On crée un bouncer avec la factory passée en paramètre et on l'ajoute à bouncers.
             bouncers.add(fac.makeSquare());
             bouncers.add(fac.makeCircle());
         }

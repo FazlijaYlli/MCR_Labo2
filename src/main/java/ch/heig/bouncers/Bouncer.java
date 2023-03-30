@@ -32,22 +32,22 @@ public abstract class Bouncer implements Bouncable {
     @Override
     public void move() {
         FrameDisplayer frame = FrameDisplayer.getInstance();
-        int width = frame.getWidth();
-        int height = frame.getHeight();
 
+        // Mouvement
         position.set(position.getX() + movement.getX(), position.getY() + movement.getY());
 
+        /* Si on detecte que le prochain mouvement sera plus loin que les limites,
+           On arrête le mouvement et on inverse la vitesse horizontale */
+
         // Collisions horizontale
-        if (position.getX() >= width - size - movement.getX() || position.getX() <= 0) {
-            // Si on est à "un mouvement" de distance de toucher le mur
-            // On arrête le mouvement et on inverse la vitesse horizontale
-            position.setX(position.getX() <= 0 ? 0 : width - size);
+        if (position.getX() >= frame.getWidth() - size - movement.getX() || position.getX() + movement.getX() <= 0) {
+            position.setX(position.getX() + movement.getX() <= 0 ? 0 : frame.getWidth() - size);
             movement.setX(-movement.getX());
         }
 
         // Collision verticales
-        if (position.getY() >= height - size - movement.getY() || position.getY() <= 0) {
-            position.setY(position.getY() <= 0 ? 0 : height - size);
+        if (position.getY() >= frame.getHeight() - size - movement.getY() || position.getY() + movement.getY() <= 0) {
+            position.setY(position.getY() + movement.getY() <= 0 ? 0 : frame.getHeight()  - size);
             movement.setY(-movement.getY());
         }
     }
