@@ -10,6 +10,6 @@ public abstract class Square extends Bouncer {
     @Override
     public Rectangle2D.Double getShape() {
         // Création des données concernant le rectangle.
-        return new Rectangle2D.Double(x, y, getSize(), getSize());
+        return new Rectangle2D.Double(position.getX(), position.getY(), getSize(), getSize());
     }
 }
