@@ -2,29 +2,30 @@ package ch.heig.bouncers;
 
 import ch.heig.displayers.FrameDisplayer;
 import ch.heig.renderers.Renderer;
+import ch.heig.vectors.Vector2D;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 
 public abstract class Bouncer implements Bouncable {
-    private final int size;
     private int x;
     private int y;
-    private int mx;
-    private int my;
+    private final int size;
+    private final Vector2D movement;
     private static final int MAX_SIZE = 50;
-    private static final int MIN_SIZE = 5;
+    private static final int MIN_SIZE = 10;
     private static final int MAX_SPD = 10;
     private static final int MIN_SPD = -10;
 
     public Bouncer() {
         x = ThreadLocalRandom.current().nextInt(FrameDisplayer.getInstance().getWidth());
         y = ThreadLocalRandom.current().nextInt(FrameDisplayer.getInstance().getHeight());
-        mx = ThreadLocalRandom.current().nextInt(MIN_SPD, MAX_SPD);
-        my = ThreadLocalRandom.current().nextInt(MIN_SPD, MAX_SPD);
-        mx = mx == 0 ? 1 : mx;
-        my = my == 0 ? 1 : my;
+        movement = new Vector2D(
+                ThreadLocalRandom.current().nextInt(MIN_SPD, MAX_SPD),
+                ThreadLocalRandom.current().nextInt(MIN_SPD, MAX_SPD)
+        );
         size = ThreadLocalRandom.current().nextInt(MIN_SIZE,MAX_SIZE+1);
     }
 
@@ -34,21 +35,21 @@ public abstract class Bouncer implements Bouncable {
         int width = frame.getWidth();
         int height = frame.getHeight();
 
-        x += mx;
-        y += my;
+        x += movement.getX();
+        y += movement.getY();
 
         // Collisions horizontale
-        if (x >= width - size - mx || x <= 0) {
+        if (x >= width - size - movement.getX() || x <= 0) {
             // Si on est à "un mouvement" de distance de toucher le mur
             // On arrête le mouvement et on inverse la vitesse horizontale
             x = x <= 0 ? 0 : width - size;
-            mx = -mx;
+            movement.setX(-movement.getX());
         }
 
         // Collision verticales
-        if (y >= height - size - my || y <= 0) {
+        if (y >= height - size - movement.getY() || y <= 0) {
             y = y <= 0 ? 0 : height - size;
-            my = -my;
+            movement.setY(-movement.getY());
         }
     }
 
