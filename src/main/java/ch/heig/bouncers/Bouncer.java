@@ -57,8 +57,6 @@ public abstract class Bouncer implements Bouncable {
         getRenderer().display(FrameDisplayer.getInstance().getGraphics(), this);
     }
 
-    public int getX() { return x; }
-    public int getY() { return y; }
     public int getSize() { return size; }
 
     public abstract Color getColor();
