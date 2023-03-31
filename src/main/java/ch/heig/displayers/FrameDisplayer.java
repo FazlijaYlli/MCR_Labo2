@@ -92,11 +92,11 @@ public class FrameDisplayer implements Displayer {
      */
     @Override
     public void repaint() {
+        panel.getGraphics().drawImage(image, 0, 0, null);
         Graphics2D g = getGraphics();
         // Empty the graphics 2D object.
         g.clearRect(0, 0, getWidth(), getHeight());
         // Use the drawImage method to recreate an empty image.
-        panel.getGraphics().drawImage(image, 0, 0, null);
     }
 
     /**
