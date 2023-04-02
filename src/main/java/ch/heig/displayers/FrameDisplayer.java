@@ -17,7 +17,7 @@ import java.awt.event.KeyAdapter;
  */
 public class FrameDisplayer implements Displayer {
     private static FrameDisplayer instance;
-    public static final JFrame frame = new JFrame();
+    private static final JFrame frame = new JFrame();
     private final Container panel;
     private Image image;
     private static final int BASE_W = 640;
