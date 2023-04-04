@@ -1,4 +1,4 @@
-package ch.heig.displayers;
+package ch.heig.graphics.displayers;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyAdapter;

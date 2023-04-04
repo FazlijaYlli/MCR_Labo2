@@ -1,6 +1,6 @@
 package ch.heig.bouncers;
 
-import ch.heig.renderers.BorderBouncerRenderer;
+import ch.heig.graphics.renderers.BorderBouncerRenderer;
 
 import java.awt.Color;
 

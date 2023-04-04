@@ -1,4 +1,4 @@
-package ch.heig.displayers;
+package ch.heig.graphics.displayers;
 
 import javax.swing.JFrame;
 import java.awt.Container;

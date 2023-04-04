@@ -1,6 +1,6 @@
 package ch.heig.bouncers;
 
-import ch.heig.renderers.FilledBouncerRenderer;
+import ch.heig.graphics.renderers.FilledBouncerRenderer;
 
 import java.awt.Color;
 

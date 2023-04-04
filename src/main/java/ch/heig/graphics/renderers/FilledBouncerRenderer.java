@@ -1,4 +1,4 @@
-package ch.heig.renderers;
+package ch.heig.graphics.renderers;
 
 import ch.heig.bouncers.Bouncable;
 

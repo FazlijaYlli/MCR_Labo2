@@ -1,7 +1,7 @@
 package ch.heig.bouncers;
 
-import ch.heig.displayers.FrameDisplayer;
-import ch.heig.renderers.Renderer;
+import ch.heig.graphics.displayers.FrameDisplayer;
+import ch.heig.graphics.renderers.Renderer;
 import ch.heig.vectors.Vector2D;
 
 import java.awt.Color;

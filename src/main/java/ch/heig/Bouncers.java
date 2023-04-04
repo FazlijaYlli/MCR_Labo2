@@ -1,7 +1,7 @@
 package ch.heig;
 
 import ch.heig.bouncers.Bouncable;
-import ch.heig.displayers.FrameDisplayer;
+import ch.heig.graphics.displayers.FrameDisplayer;
 import ch.heig.factories.BorderBouncersFactory;
 import ch.heig.factories.BouncersFactory;
 import ch.heig.factories.FilledBouncersFactory;
